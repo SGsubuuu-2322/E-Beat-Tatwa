@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { loginUserDetailsAPI } from "@/Store/Actions/UserAction";
 import Loader from "../components/Loader";
+// import { Button } from "@/components/ui/button";
 const LoginDetails = () => {
   const Navigate = useNavigate();
   const Dispatch = useDispatch();
@@ -53,7 +54,7 @@ const LoginDetails = () => {
   };
 
   useEffect(() => {
-    console.log(userDetails);
+    // console.log(userDetails);
     if (userDetails.length == 0) {
       Navigate("/login");
     }
@@ -61,36 +62,34 @@ const LoginDetails = () => {
 
   return userDetails.length > 0 ? (
     <>
-      <div className="h-screen w-screen p-10 bg-secondarylite overflow-hidden flex flex-col gap-y-2 items-center justify-center">
-        <div className="shadow-xl shadow-black overflow-hidden overflow-y-auto w-3/4 h-3/4 p-5 bg-white border-4 border-secondary rounded-2xl flex flex-col gap-y-2">
+      <div className="h-screen w-screen p-10 bg-purple-100 overflow-hidden flex flex-col gap-y-2 items-center justify-center">
+        <div className="shadow-xl shadow-black overflow-hidden overflow-y-auto w-3/4 h-3/4 p-5 bg-purple-200 border-4 border-purple-500 shadow-lg shadow-purple-700 rounded-2xl flex flex-col gap-y-2">
           {userDetails.map((ud, i) => (
             <div
               onClick={() => boxHandler(i)}
               key={i}
               className={`${
-                boxId == i ? "bg-purple-200" : ""
-              } hover:bg-purple-200 border-2 border-primary text-xl text-primary p-3 active:border-secondarylite active:text-secondarylite`}
+                boxId == i ? "bg-purple-400" : ""
+              } hover:bg-purple-400 border-2 border-primary text-xl text-purple-700 font-black p-3 active:border-secondarylite active:text-secondarylite`}
             >
               <div>
                 <h1 className="font-semibold ">
                   District :{" "}
-                  <span className="font-normal text-secondary">
-                    {ud.district}
-                  </span>
+                  <span className="font-normal text-black">{ud.district}</span>
                 </h1>
                 <h1 className="font-semibold ">
                   Office Name :{" "}
-                  <span className="font-normal text-secondary">
+                  <span className="font-normal text-black">
                     {ud.office_name}
                   </span>
                 </h1>
                 <h1 className="font-semibold ">
                   Police Station :{" "}
-                  <span className="font-normal text-secondary">{ud.ps}</span>
+                  <span className="font-normal text-black">{ud.ps}</span>
                 </h1>
                 <h1 className="font-semibold ">
                   Role :{" "}
-                  <span className="font-normal text-secondary">{ud.role}</span>
+                  <span className="font-normal text-black">{ud.role}</span>
                 </h1>
               </div>
               <input
@@ -103,8 +102,9 @@ const LoginDetails = () => {
           ))}
         </div>
         <button
+          // variant="custom"
           onClick={() => clickhandler(userData)}
-          className="hover:bg-secondary hover:text-white active:scale-105 rounded-xl px-3 py-2 text-2xl font-bold text-primary border-2 border-secondary bg-secondarylite"
+          className=" mt-6 hover:bg-purple-500 hover:duration-300 active:duration-200 hover:shadow-lg hover:shadow-purple-600 hover:text-white active:scale-105 rounded-xl px-5 py-2 text-2xl font-bold text-primary border-2 border-secondary bg-purple-300"
         >
           Submit
         </button>
